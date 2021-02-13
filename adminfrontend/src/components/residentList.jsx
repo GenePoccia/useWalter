@@ -1,12 +1,14 @@
 import { Component } from "react";
-
+import SingleResident from './residentSingle'
 
 export default class Residents extends Component {
     constructor(props) {
         super(props);
         this.state = {residents: []};
       }
-
+    
+      //get list of residents from backend
+      //Better: get list of residents from DB
     componentWillMount = () => {
         fetch("http://localhost:4000/residents")
         .then(x => {
@@ -18,14 +20,9 @@ export default class Residents extends Component {
         })
     }
   render = () => {
-      console.log('state', this.state.residents)
+      //render each unit as a component
      return  this.state.residents.map(resident => {
-          return (<div >
-              <div style={{paddingBottom: "2%"}}>{resident.unit} | {resident.name}</div>
-              <div style={{paddingBottom: "5%"}}> Deliver Package</div>
-              </div>
-              
-          )
+          return <SingleResident props={resident}/> 
       })
 }
 }

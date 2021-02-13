@@ -9,14 +9,17 @@ app.use("/images", express.static(__dirname + "/images"));
 
 
 
-app.get("/", (req, res) => {
-        res.send("hello");
-});
-
 app.get("/residents", (req, res) => {
   let residentList = residents.getResidents()
   res.send({body: residentList})
 })
+
+app.post("/sendNotification", upload.none(), (req, res) => {
+  let packageID = residents.generatePackageID()
+  //updates the user object to add the package in the database
+  residents.sendNotification(req.body.unit, packageID)
+})
+
 
 
 app.listen(4000, function() {
