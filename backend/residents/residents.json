@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Eugenio Poccia",
+    "unit": 1,
+    "packages": [],
+    "notifications": {
+      "sms": false,
+      "email": false
+    }
+  },
+  {
+    "name": "John Doe",
+    "unit": 2,
+    "packages": [],
+    "notifications": {
+      "sms": false,
+      "email": false
+    }
+  }
+]

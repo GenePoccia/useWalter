@@ -1,7 +1,7 @@
 import { Component } from "react";
+import Residents from "./components/residentList"
 
-
-export default class UnconnectedApp extends Component {
+export default class App extends Component {
   render = () => {
     return (
         <div>
@@ -13,8 +13,7 @@ export default class UnconnectedApp extends Component {
     
         {/*body*/}
         <div style={{paddingLeft: "15%", paddingTop: "5%"}}>
-          Apartment 1: Eugenio Poccia <br />
-          Apartment 2: John Doe
+            <Residents />
         </div>
         
         </div>
