@@ -15,7 +15,7 @@ export default class SingleResident extends Component {
           {this.state.residents.unit} | {this.state.residents.name}
         </div>
         <div style={{paddingBottom: "5%"}}>
-            <DeliveryPackage props={this.state.residents.unit}/>
+            <DeliveryPackage props={this.state.residents}/>
         </div>
       </div>
     );
