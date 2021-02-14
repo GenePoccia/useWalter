@@ -11,6 +11,9 @@ const sendNotification =  async (unit) => {
   let residentObject = await aws.getS3Object(unit)
   let package = packages.initializePackage(residentObject)
 
+  //push package to package bucket on DB
+  aws.pushS3Package(package)
+  //push package to resident DB
   residentObject.packages.push(package)
   aws.pushS3Object(residentObject)
 };
