@@ -15,6 +15,32 @@ const getS3Object = async (unit) => {
     return JSON.parse(residentObject.Body);
 }
 
+//get all packages list
+const getS3Packages = async () => {
+    let params = {
+        Bucket: PACKAGE_BUCKET,
+    }
+
+    let packages = await s3.listObjects(params).promise()
+    let allPackageKeys = packages.Contents.map(package => {
+        return package.Key
+    })
+
+    return await getAllPackageObjects(allPackageKeys)
+}
+
+//another call to s3 to get package objects
+const getAllPackageObjects = async (keys) => {
+    let arr = [];
+    for(let i = 0; i < keys.length; i++) {
+        let obj = await s3.getObject({
+            Bucket:PACKAGE_BUCKET,
+            Key: keys[i]
+        }).promise()
+        arr.push(JSON.parse(obj.Body))
+    }
+    return arr
+}
 //push a resident object with updated package details (for notification purposes)
 const pushS3Object = (object) => {
     let params = {
@@ -34,7 +60,7 @@ const pushS3Object = (object) => {
 const pushS3Package = (object) => {
     let params = {
         Bucket: PACKAGE_BUCKET,
-        Key: object.id,
+        Key: object.id.toString() + ".json",
         Body: JSON.stringify(object)
     }
 
@@ -47,5 +73,6 @@ const pushS3Package = (object) => {
 module.exports = {
     getS3Object,
     pushS3Object,
-    pushS3Package
+    pushS3Package,
+    getS3Packages
 }

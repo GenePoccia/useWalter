@@ -3,13 +3,14 @@ import { Component } from "react";
 export default class DeliveryPackage extends Component {
   constructor(props) {
     super(props);
-    this.state={unit: props.props}
+    this.state={resident: props.props}
   }
 
   sendNotification = () => {
     //Build a form to send to the backend
     let data = new FormData();
-    data.append("unit", this.state.unit);
+    data.append("resident", this.state.resident.name);
+    data.append("unit", this.state.resident.unit)
     //Ping backend here to update resident DB so resident's package key gets updated with a package
     fetch("http://localhost:4000/sendNotification",{
         method: "POST",

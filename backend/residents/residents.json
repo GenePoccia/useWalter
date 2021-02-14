@@ -3,6 +3,9 @@
     "name": "Eugenio Poccia",
     "unit": 1,
     "packages": [],
+    "password": "password123",
+    "userEmail": "pocciaeugenio@gmail.com",
+    "packageDelivered": false,
     "notifications": {
       "sms": false,
       "email": false
@@ -11,6 +14,9 @@
   {
     "name": "John Doe",
     "unit": 2,
+    "password": "password123",
+    "userEmail": "johndoe@gmail.com",
+    "packageDelivered": false,
     "packages": [],
     "notifications": {
       "sms": false,

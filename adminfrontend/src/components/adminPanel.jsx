@@ -1,6 +1,6 @@
 import { Component } from "react";
 import { Link } from "react-router-dom";
-
+import AdminPackageList from "./adminPackageList"
 
 export default class LandingPage extends Component {
   render = () => {
@@ -18,7 +18,7 @@ export default class LandingPage extends Component {
 
         {/*body*/}
         <div style={{ paddingLeft: "15%", paddingTop: "5%" }}>
-
+        <AdminPackageList/>
         </div>
       </div>
     );
