@@ -15,9 +15,8 @@ app.get("/residents", (req, res) => {
 })
 
 app.post("/sendNotification", upload.none(), (req, res) => {
-  let packageID = residents.generatePackageID()
   //updates the user object to add the package in the database
-  residents.sendNotification(req.body.unit, packageID)
+  residents.sendNotification(req.body.unit)
 })
 
 
