@@ -1,23 +1,24 @@
 import { Component } from "react";
-import Residents from "./components/residentList"
+import { Route } from "react-router-dom";
+//pages
+import LandingPage from "./components/landingPage";
+import AdminPanel from "./components/adminPanel";
 
 export default class App extends Component {
+  renderRoot = () => {
+    return <LandingPage />;
+  };
+
+  renderAdminPanel = () => {
+    return <AdminPanel />;
+  };
+
   render = () => {
     return (
-        <div>
-        {/*header*/}
-        <div style={{display: "flex"}}>
-            <h1 style={{textAlign: "center", paddingLeft: "40%"}}>Walter Apartments</h1>
-            <div style={{paddingLeft: "35%", paddingTop: "30px",}}>admin button placeholder</div>
-        </div>
-    
-        {/*body*/}
-        <div style={{paddingLeft: "15%", paddingTop: "5%"}}>
-            <Residents />
-        </div>
-        
-        </div>
-      );
+      <div>
+        <Route exact={true} path="/" render={this.renderRoot} />
+        <Route exact={true} path="/adminPanel" render={this.renderAdminPanel} />
+      </div>
+    );
+  };
 }
-}
-
