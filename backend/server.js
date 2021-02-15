@@ -25,8 +25,10 @@ app.post("/sendNotification", upload.none(), (req, res) => {
   packages.pushPackageToDb(req.body)
 })
 
+//mobile endpoints
+app.post("/login", upload.none(), (req, res) => {
 
-
+})
 
 
 
