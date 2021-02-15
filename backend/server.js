@@ -5,7 +5,7 @@ let upload = multer();
 let cors = require("cors");
 let residents = require("./src/residents")
 let packages = require('./src/packages')
-app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
+app.use(cors({ credentials: true, origin: "*" }));
 app.use("/images", express.static(__dirname + "/images"));
 
 
