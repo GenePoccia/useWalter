@@ -2,6 +2,8 @@ import { Component } from "react";
 import { Button, Form } from 'semantic-ui-react'
 import "semantic-ui-css/semantic.min.css";
 
+import UserPage from "./components/userPage"
+
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -9,7 +11,8 @@ export default class App extends Component {
       email: "",
       password: "",
       unit: null,
-      loginSuccess: false
+      loginSuccess: false,
+      resident: {}
     };
   }
 
@@ -43,23 +46,21 @@ export default class App extends Component {
         return x.text();
       })
       .then(responseBody => {
-        let loginSuccess = JSON.parse(responseBody).body;
-        console.log(loginSuccess)
-        if (!loginSuccess) {
+        let body = JSON.parse(responseBody).body;
+        if (!body.loginSuccess) {
           window.alert("Invalid login credentials, try again");
           return;
         }
-          this.setState({loginSuccess: true})
+          this.setState({loginSuccess: true, resident: body.resident})
           window.alert('Successfully logged in')
       });
   };
   
 
   render = () => {
-
     const { loginSuccess } = this.state
     if(loginSuccess) {
-      return <div> login success</div>
+      return <div> <UserPage props={this.state.resident}/></div>
     } else {
       return (
         <div style={{ paddingLeft: "40%", paddingTop: "20%", paddingRight: "30%"}}>

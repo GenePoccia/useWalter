@@ -17,7 +17,10 @@ const sendNotification =  async (object) => {
 
 const checkLogin = async (form) => {
   let residentObject = await aws.getS3Object(form)
-  return await validateLogin(form, residentObject)
+  return await {
+    loginSuccess: validateLogin(form, residentObject),
+    resident: residentObject  
+  }
 }
 
 const validateLogin = (form, residentObject) => {
