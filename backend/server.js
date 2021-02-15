@@ -8,8 +8,7 @@ let packages = require('./src/packages')
 app.use(cors({ credentials: true, origin: "*" }));
 app.use("/images", express.static(__dirname + "/images"));
 
-
-
+//webapp endpoints
 app.get("/residents", (req, res) => {
   let residentList = residents.getResidents()
   res.send({body: residentList})
@@ -25,6 +24,7 @@ app.post("/sendNotification", upload.none(), (req, res) => {
   residents.sendNotification(req.body)
   packages.pushPackageToDb(req.body)
 })
+
 
 
 
