@@ -8,7 +8,8 @@ export default class App extends Component {
     this.state = {
       email: "",
       password: "",
-      unit: null
+      unit: null,
+      loginSuccess: false
     };
   }
 
@@ -31,47 +32,55 @@ export default class App extends Component {
     
     //validate login 
     let data = new FormData();
-    data.append("username", this.state.username);
+    data.append("email", this.state.email);
     data.append("password", this.state.password);
     data.append("unit", this.state.unit);
     fetch("http://localhost:4000/login", {
       method: "POST",
-      body: data,
-      credentials: "include"
+      body: data
     })
       .then(x => {
         return x.text();
       })
       .then(responseBody => {
-        let body = JSON.parse(responseBody);
-        if (!body.success) {
-          alert("login failed");
+        let loginSuccess = JSON.parse(responseBody).body;
+        console.log(loginSuccess)
+        if (!loginSuccess) {
+          window.alert("Invalid login credentials, try again");
           return;
         }
-          //what to do when login is successful
+          this.setState({loginSuccess: true})
+          window.alert('Successfully logged in')
       });
   };
   
 
   render = () => {
-    return (
-      <div style={{ paddingLeft: "40%", paddingTop: "20%", paddingRight: "30%"}}>
-          <Form onSubmit={this.handleSubmit}>
-            <Form.Field>
-              <label>E-mail</label>
-              <input placeholder="E-mail" onChange={this.handleEmailChange} />
-            </Form.Field>
-            <Form.Field>
-              <label>Password</label>
-              <input  type="password" placeholder="Password" onChange={this.handlePasswordChange} />
-            </Form.Field>
-            <Form.Field>
-              <label>Unit</label>
-              <input placeholder="Unit #" onChange={this.handleUnitChange}/>
-            </Form.Field>
-            <Button type="submit">Login</Button>
-          </Form>
-      </div>
-    );
+
+    const { loginSuccess } = this.state
+    if(loginSuccess) {
+      return <div> login success</div>
+    } else {
+      return (
+        <div style={{ paddingLeft: "40%", paddingTop: "20%", paddingRight: "30%"}}>
+            <Form onSubmit={this.handleSubmit}>
+              <Form.Field>
+                <label>E-mail</label>
+                <input placeholder="E-mail" onChange={this.handleEmailChange} />
+              </Form.Field>
+              <Form.Field>
+                <label>Password</label>
+                <input  type="password" placeholder="Password" onChange={this.handlePasswordChange} />
+              </Form.Field>
+              <Form.Field>
+                <label>Unit</label>
+                <input placeholder="Unit #" onChange={this.handleUnitChange}/>
+              </Form.Field>
+              <Button type="submit">Login</Button>
+            </Form>
+        </div>
+      );
+    }
+    
   };
 }

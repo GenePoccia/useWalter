@@ -25,8 +25,9 @@ app.post("/sendNotification", upload.none(), (req, res) => {
 })
 
 //mobile endpoints
-app.post("/login", upload.none(), (req, res) => {
-
+app.post("/login", upload.none(), async (req, res) => {
+  let loginSuccess = await residents.checkLogin(req.body)
+  res.send({body: loginSuccess})
 })
 
 
