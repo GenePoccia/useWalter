@@ -19,14 +19,20 @@ const getAllPackages = async () => {
     return await aws.getS3Packages()
 }
 
+const deletePackageFromDb = async (object) => {
+   await aws.deletePackage(object.packageId)
+}
 
 //Generates an ID for the package
 const generatePackageID = function () {
     return Math.floor(Math.random() * 1000000000000);
-  };
+};
+
+
 
 
 module.exports = {
     pushPackageToDb,
-    getAllPackages
+    getAllPackages,
+    deletePackageFromDb
 }
