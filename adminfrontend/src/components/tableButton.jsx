@@ -10,9 +10,17 @@ export default class TableButton extends Component {
     evt.preventDefault()
     let result = window.confirm(`Confirm the pick up of package ${this.state.packageId}`)
 
+    let data = new FormData();
+    data.append("packageId", this.state.packageId);
+
     if(result) {
-      //delete object from s3
+      fetch("http://localhost:4000/delete-package",{
+        method: "POST",
+        body: data,
+      })
     }
+    window.alert(`${this.state.packageId} picked up`)
+    window.location.reload()
   }
 
   render = () => {

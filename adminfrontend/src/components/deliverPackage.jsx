@@ -17,13 +17,13 @@ export default class DeliveryPackage extends Component {
         body: data,
         credentials: "include"
       })
-    .then(x => {
-        return x.text()
-    })
-    .then(responseBody => {
-      window.alert(`Delivery notification sent to unit ${this.state.unit}`)
-    })
-    
+    // .then(x => {
+    //     return x.text()
+    // })
+    // .then(responseBody => {
+      
+    // })
+    window.alert(`Delivery notification sent to unit ${this.state.resident.unit}`)
   }
   render = () => {
       return  <button onClick={this.sendNotification}>Deliver Package</button>

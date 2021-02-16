@@ -34,10 +34,18 @@ const putPackageObjectQuery = (bucketName, packageObject) => {
     }
 }
 
+const deletePackageObjectQuery = (bucketName, id) => {
+    return {
+        Bucket: bucketName,
+        Key: id.toString() + '.json'
+    }
+}
+
 module.exports = {
     getResidentQuery,
     getListOfPackagesQuery,
     getAllPackagesQuery,
     putResidentObjectQuery,
-    putPackageObjectQuery
+    putPackageObjectQuery,
+    deletePackageObjectQuery
   };
