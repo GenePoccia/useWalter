@@ -21,8 +21,9 @@ export default class DeliveryPackage extends Component {
         return x.text()
     })
     .then(responseBody => {
+      window.alert(`Delivery notification sent to unit ${this.state.unit}`)
     })
-    //window.alert(`Delivery notification sent to unit ${this.state.unit}`)
+    
   }
   render = () => {
       return  <button onClick={this.sendNotification}>Deliver Package</button>
