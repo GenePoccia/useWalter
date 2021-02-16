@@ -6,7 +6,6 @@ let cors = require("cors");
 let residents = require("./src/residents")
 let packages = require('./src/packages')
 app.use(cors({ credentials: true, origin: "*" }));
-app.use("/images", express.static(__dirname + "/images"));
 
 //webapp endpoints
 app.get("/residents", (req, res) => {
@@ -25,8 +24,11 @@ app.post("/sendNotification", upload.none(), (req, res) => {
   packages.pushPackageToDb(req.body)
 })
 
-
-
+//mobile endpoints
+app.post("/login", upload.none(), async (req, res) => {
+  let loginSuccess = await residents.checkLogin(req.body)
+  res.send({body: loginSuccess})
+})
 
 
 

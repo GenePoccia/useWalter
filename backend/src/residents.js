@@ -15,7 +15,27 @@ const sendNotification =  async (object) => {
 };
 
 
+const checkLogin = async (form) => {
+  let residentObject = await aws.getS3Object(form)
+  return await {
+    loginSuccess: validateLogin(form, residentObject),
+    resident: residentObject  
+  }
+}
+
+const validateLogin = (form, residentObject) => {
+  console.log(form.unit, residentObject.unit)
+  if (form.email === residentObject.userEmail && 
+    form.password === residentObject.password
+    ) {
+      return true
+    } else {
+      return false
+    }
+}
+
 module.exports = {
   getResidents,
-  sendNotification
+  sendNotification,
+  checkLogin
 };

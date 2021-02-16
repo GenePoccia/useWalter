@@ -21,7 +21,7 @@ const getAllPackagesQuery = (bucketName, key) => {
 const putResidentObjectQuery = (bucketName, residentObject) => {
     return {
         Bucket: bucketName,
-        Key: `residewnt/${residentObject.unit}.json`,
+        Key: `resident/${residentObject.unit}.json`,
         Body: JSON.stringify(residentObject)
     }
 }

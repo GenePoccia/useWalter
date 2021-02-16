@@ -9,7 +9,7 @@ PACKAGE_BUCKET = "packages-walter-test"
 //get a resident object
 const getS3Object = async (object) => {
     let params = paramBuilder.getResidentQuery(BUCKET_NAME, object.unit)
-    
+
     let residentObject = await s3.getObject(params).promise()
     return JSON.parse(residentObject.Body);
 }
