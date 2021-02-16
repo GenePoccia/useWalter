@@ -1,13 +1,16 @@
 import { Component } from "react";
-import SinglePackage from "./singlePackage";
-import { Icon, Label, Menu, Table } from "semantic-ui-react";
+import {Label, Table } from "semantic-ui-react";
+import TableButton from "./tableButton"
 import "semantic-ui-css/semantic.min.css";
 
 export default class AdminPackageList extends Component {
   constructor(props) {
     super(props);
     this.state = { listOfPackages: [] };
+
   }
+
+  //get packages from packages db
   componentWillMount = () => {
     fetch("http://localhost:4000/get-packages")
       .then((x) => {
@@ -18,11 +21,9 @@ export default class AdminPackageList extends Component {
         this.setState({ listOfPackages: body.body });
       });
   };
+
   render = () => {
-    //renders each package
-    //   return  this.state.listOfPackages.map(singlePackage => {
-    //     return <SinglePackage props={singlePackage}/>
-    //})
+    //renders all packages on admin panel
     return (
       <Table celled>
         <Table.Header>
@@ -42,7 +43,9 @@ export default class AdminPackageList extends Component {
                     <Table.Cell>{singlePackage.name}</Table.Cell>
                     <Table.Cell>{singlePackage.id}</Table.Cell>
                     <Table.Cell>
-                      <Label>Picked up</Label>
+                      <Label>
+                        <TableButton props={singlePackage.id} />
+                        </Label>
                     </Table.Cell>
                   </Table.Row> 
                 )
