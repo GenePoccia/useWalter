@@ -17,7 +17,7 @@ export default class LandingPage extends Component {
         </div>
 
         {/*body*/}
-        <div style={{ paddingLeft: "15%", paddingTop: "5%" }}>
+        <div style={{ paddingLeft: "15%",paddingRight: "15%", paddingTop: "5%" }}>
         <AdminPackageList/>
         </div>
       </div>
