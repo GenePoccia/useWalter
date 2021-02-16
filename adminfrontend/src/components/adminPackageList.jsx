@@ -1,13 +1,12 @@
 import { Component } from "react";
-import {Label, Table } from "semantic-ui-react";
-import TableButton from "./tableButton"
+import { Label, Table } from "semantic-ui-react";
+import TableButton from "./tableButton";
 import "semantic-ui-css/semantic.min.css";
 
 export default class AdminPackageList extends Component {
   constructor(props) {
     super(props);
     this.state = { listOfPackages: [] };
-
   }
 
   //get packages from packages db
@@ -36,20 +35,20 @@ export default class AdminPackageList extends Component {
         </Table.Header>
 
         <Table.Body>
-            {this.state.listOfPackages.map( singlePackage => {
-                return (
-                    <Table.Row>
-                    <Table.Cell>{singlePackage.unit}</Table.Cell>
-                    <Table.Cell>{singlePackage.name}</Table.Cell>
-                    <Table.Cell>{singlePackage.id}</Table.Cell>
-                    <Table.Cell>
-                      <Label>
-                        <TableButton props={singlePackage.id} />
-                        </Label>
-                    </Table.Cell>
-                  </Table.Row> 
-                )
-            })}
+          {this.state.listOfPackages.map((singlePackage) => {
+            return (
+              <Table.Row>
+                <Table.Cell>{singlePackage.unit}</Table.Cell>
+                <Table.Cell>{singlePackage.name}</Table.Cell>
+                <Table.Cell>{singlePackage.id}</Table.Cell>
+                <Table.Cell>
+                  <Label>
+                    <TableButton props={singlePackage.id} />
+                  </Label>
+                </Table.Cell>
+              </Table.Row>
+            );
+          })}
         </Table.Body>
       </Table>
     );
