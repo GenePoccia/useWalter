@@ -1,5 +1,7 @@
 const aws = require("./awsQueries");
 
+PACKAGE_BUCKET = "packages-walter-test";
+
 const intializePackage = (resident) => {
   return {
     name: resident.resident,
@@ -12,15 +14,15 @@ const intializePackage = (resident) => {
 
 const pushPackageToDb = (object) => {
   let package = intializePackage(object);
-  aws.pushS3Package(package);
+  aws.pushS3Object(PACKAGE_BUCKET, package.id, package);
 };
 
 const getAllPackages = async () => {
-  return await aws.getS3Packages();
+  return await aws.getAllObjectsFromDb(PACKAGE_BUCKET);
 };
 
 const deletePackageFromDb = async (object) => {
-  await aws.deletePackage(object.packageId);
+  await aws.deleteObject(PACKAGE_BUCKET, object.packageId);
 };
 
 //Generates an ID for the package

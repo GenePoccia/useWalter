@@ -1,0 +1,12 @@
+{
+    "name": "John Doe",
+    "unit": 2,
+    "password": "password456",
+    "userEmail": "johndoe@gmail.com",
+    "packageDelivered": false,
+    "packages": [],
+    "notifications": {
+    "sms": false,
+    "email": false
+    }
+    }
