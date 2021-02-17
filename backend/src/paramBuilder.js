@@ -1,7 +1,7 @@
 const getResidentQuery = (bucketName, unit) => {
   return {
     Bucket: bucketName,
-    Key: `residents/${unit}.json`,
+    Key: `${unit}.json`,
   };
 };
 

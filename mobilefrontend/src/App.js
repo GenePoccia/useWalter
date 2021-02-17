@@ -62,7 +62,6 @@ export default class App extends Component {
     if (loginSuccess) {
       return (
         <div>
-          {" "}
           <UserPage props={this.state.resident} />
         </div>
       );

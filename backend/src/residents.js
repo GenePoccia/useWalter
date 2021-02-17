@@ -26,7 +26,6 @@ const checkLogin = async (form) => {
 };
 
 const validateLogin = (form, residentObject) => {
-  console.log(form.unit, residentObject.unit);
   if (
     form.email === residentObject.userEmail &&
     form.password === residentObject.password
