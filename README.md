@@ -36,7 +36,7 @@ However knowing some basic SQL queries, I can see how having a relational DB wit
 
 Also as I was figuring out my back end and was changing a lot of object structures, I decided to not use Typescript for the time being, with slightly more time I would go back and start adding types to my objects to be able to better follow the flow and easily debug.
 
-Given more time with the project I would have looked into using PostgreSQL as a DB as well as React Native.
+Given more time with the project I would have also looked into using PostgreSQL as a DB as well as React Native.
 
 ## Features that could easily be added
 1. Cookies to stay logged in for user
