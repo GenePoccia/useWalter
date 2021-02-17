@@ -36,8 +36,8 @@ const pullAllObjectsFromDb = async (keys, bucket) => {
 };
 
 const pushS3Object = (bucket, key, object) => {
-  console.log("here", object);
-  let params = paramBuilder.putObjectQuery(bucket, key, object);
+  let dbKey = key + ".json";
+  let params = paramBuilder.putObjectQuery(bucket, dbKey, object);
 
   s3.putObject(params, function (err, data) {
     if (err) console.log(err);

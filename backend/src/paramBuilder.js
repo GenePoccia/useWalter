@@ -1,5 +1,8 @@
+//Typscript objects:
+// bucketname and key would have type string
+// object would have type any
+
 const getSingleObjectQuery = (bucketName, key) => {
-  console.log("key", bucketName);
   return {
     Bucket: bucketName,
     Key: key.toString(),
@@ -15,7 +18,7 @@ const getListQuery = (bucketName) => {
 const putObjectQuery = (bucketName, key, object) => {
   return {
     Bucket: bucketName,
-    Key: key.toString() + ".json",
+    Key: key.toString(),
     Body: JSON.stringify(object),
   };
 };

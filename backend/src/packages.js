@@ -2,6 +2,26 @@ const aws = require("./awsQueries");
 
 PACKAGE_BUCKET = "packages-walter-test";
 
+//Typescript: resident would have type Resident:
+// {
+//   "name": string
+//   "unit": int
+//   "password": string
+//   "userEmail": string
+//   "packageDelivered": boolean
+//   "packages: array
+//   "notifications": object
+// }
+
+// object (package) would have type Package:
+// {
+//   "name": string
+//   "unit": string or int
+//   "id": int
+//   "delivered": boolean
+//   "pickedUpByResident": boolean
+// }
+
 //intializes package for packageDB
 const intializePackage = (resident) => {
   return {

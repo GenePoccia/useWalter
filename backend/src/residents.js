@@ -2,6 +2,17 @@ const aws = require("./awsQueries");
 
 RESIDENT_BUCKET = "walter-residents";
 
+//Typescript: resident would have type Resident:
+// {
+//   "name": string
+//   "unit": int
+//   "password": string
+//   "userEmail": string
+//   "packageDelivered": boolean
+//   "packages: array
+//   "notifications": object
+// }
+
 const getResidents = async () => {
   return await aws.getAllObjectsFromDb(RESIDENT_BUCKET);
 };
