@@ -1,10 +1,13 @@
-const RESIDENTS = require("../residents/residents.json");
 const aws = require("./awsQueries");
 
 //Get list of residents, (Very bad, put this in DB)
-const getResidents = () => {
-  return RESIDENTS;
-};
+// const getResidents = () => {
+//   return RESIDENTS;
+// };
+
+const getResidents = async () => {
+  return await aws.getS3Residents()
+}
 
 const sendNotification = async (object) => {
   //gets resident object from s3

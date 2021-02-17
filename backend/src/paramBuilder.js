@@ -11,6 +11,12 @@ const getListOfPackagesQuery = (bucketName) => {
   };
 };
 
+const getListOfResidentsQuery = (bucketName) => {
+  return {
+    Bucket: bucketName,
+  };
+};
+
 const getAllPackagesQuery = (bucketName, key) => {
   return {
     Bucket: bucketName,
@@ -18,10 +24,17 @@ const getAllPackagesQuery = (bucketName, key) => {
   };
 };
 
+const getAllResidentsQuery = (bucketName, key) => {
+  return {
+    Bucket: bucketName,
+    Key: key.toString()
+  };
+};
+
 const putResidentObjectQuery = (bucketName, residentObject) => {
   return {
     Bucket: bucketName,
-    Key: `resident/${residentObject.unit}.json`,
+    Key: `${residentObject.unit}.json`,
     Body: JSON.stringify(residentObject),
   };
 };
@@ -48,4 +61,6 @@ module.exports = {
   putResidentObjectQuery,
   putPackageObjectQuery,
   deletePackageObjectQuery,
+  getListOfResidentsQuery,
+  getAllResidentsQuery
 };
