@@ -2,6 +2,7 @@ const aws = require("./awsQueries");
 
 PACKAGE_BUCKET = "packages-walter-test";
 
+//intializes package for packageDB
 const intializePackage = (resident) => {
   return {
     name: resident.resident,

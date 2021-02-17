@@ -28,7 +28,7 @@ const pullAllObjectsFromDb = async (keys, bucket) => {
   for (let i = 0; i < keys.length; i++) {
     //build query for each object
     let params = paramBuilder.getSingleObjectQuery(bucket, keys[i]);
-    //get a single object then push it to the array
+    //get the object then push it to the array
     let obj = await s3.getObject(params).promise();
     arr.push(JSON.parse(obj.Body));
   }
@@ -59,9 +59,6 @@ const deleteObject = (bucket, id) => {
 module.exports = {
   getSingleS3Object,
   pushS3Object,
-  //pushS3Package,
   getAllObjectsFromDb,
   deleteObject,
-  //deletePackage,
-  //getS3Residents
 };

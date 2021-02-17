@@ -14,7 +14,9 @@ export default class LandingPage extends Component {
             Walter Apartments
           </h1>
           <div style={{ paddingLeft: "35%", paddingTop: "30px" }}>
-            <Label><Link to="/adminPanel">Admin Panel</Link></Label>
+            <Label>
+              <Link to="/adminPanel">Admin Panel</Link>
+            </Label>
           </div>
         </div>
 

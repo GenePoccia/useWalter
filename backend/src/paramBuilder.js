@@ -1,8 +1,8 @@
 const getSingleObjectQuery = (bucketName, key) => {
-  console.log('key', bucketName)
+  console.log("key", bucketName);
   return {
     Bucket: bucketName,
-    Key: key.toString()
+    Key: key.toString(),
   };
 };
 
@@ -11,13 +11,6 @@ const getListQuery = (bucketName) => {
     Bucket: bucketName,
   };
 };
-
-// const getAllObjectsQuery = (bucketName, key) => {
-//   return {
-//     Bucket: bucketName,
-//     Key: key.toString(),
-//   };
-// };
 
 const putObjectQuery = (bucketName, key, object) => {
   return {
@@ -38,5 +31,5 @@ module.exports = {
   getSingleObjectQuery,
   getListQuery,
   putObjectQuery,
-  deleteObjectQuery
+  deleteObjectQuery,
 };
