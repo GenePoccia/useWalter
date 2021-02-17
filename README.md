@@ -44,6 +44,9 @@ Given more time with the project I would have looked into using PostgreSQL as a 
 3. Change notification settings for user (and use email/sms notifications and RabbitMQ)
 4. Better UI (more css)
 
+## The bad (what I'm not proud of)
+Having a publicly accesible DB with user passwords available is a big no-no. This is something I would never do in a production environment and would spend time learning about security credentials and protocols to ensure that user data is safe.
+
 
 
 
