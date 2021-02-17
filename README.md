@@ -27,7 +27,7 @@ React <br />
 Node.js  <br />
 Express <br />
 Amazon S3 <br />
-Babel <br />cd
+Babel <br />
 Webpack <br />
 
 I decided to stick with technology that I was familiar with given the timeframe and demonstrate my knowledge this way rather than implementing tech I wasn't familiar with and potentially not having a finished product to show for.
