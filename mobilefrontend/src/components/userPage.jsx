@@ -4,7 +4,7 @@ import UserDetails from "./userDetails";
 export default class UserPage extends Component {
   constructor(props) {
     super(props);
-    this.state = { listOfPackages: [], resident: this.props.props };
+    this.state = { listOfPackages: null, resident: this.props.props, loaded: false };
   }
 
   componentWillMount = () => {
@@ -17,7 +17,8 @@ export default class UserPage extends Component {
         let userPackages = body.body.filter((x) => {
           return x.unit == this.state.resident.unit;
         });
-        this.setState({ listOfPackages: userPackages });
+
+        this.setState({ listOfPackages: userPackages, loaded: true });
       });
   };
 
@@ -26,7 +27,7 @@ export default class UserPage extends Component {
       resident: this.state.resident,
       packages: this.state.listOfPackages,
     };
-    if (this.state.listOfPackages.length === 0) {
+    if (!this.state.loaded) {
       return <div>Loading ...</div>;
     } else {
       return (

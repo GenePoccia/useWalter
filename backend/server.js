@@ -8,8 +8,8 @@ let packages = require("./src/packages");
 app.use(cors({ credentials: true, origin: "*" }));
 
 //webapp endpoints
-app.get("/residents", (req, res) => {
-  let residentList = residents.getResidents();
+app.get("/residents", async (req, res) => {
+  let residentList = await residents.getResidents();
   res.send({ body: residentList });
 });
 

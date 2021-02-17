@@ -1,10 +1,13 @@
-const RESIDENTS = require("../residents/residents.json");
 const aws = require("./awsQueries");
 
 //Get list of residents, (Very bad, put this in DB)
-const getResidents = () => {
-  return RESIDENTS;
-};
+// const getResidents = () => {
+//   return RESIDENTS;
+// };
+
+const getResidents = async () => {
+  return await aws.getS3Residents()
+}
 
 const sendNotification = async (object) => {
   //gets resident object from s3
@@ -23,7 +26,6 @@ const checkLogin = async (form) => {
 };
 
 const validateLogin = (form, residentObject) => {
-  console.log(form.unit, residentObject.unit);
   if (
     form.email === residentObject.userEmail &&
     form.password === residentObject.password
