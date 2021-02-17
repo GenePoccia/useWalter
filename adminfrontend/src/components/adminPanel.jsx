@@ -1,5 +1,6 @@
 import { Component } from "react";
 import { Link } from "react-router-dom";
+import { Label } from "semantic-ui-react";
 import AdminPackageList from "./adminPackageList";
 
 export default class LandingPage extends Component {
@@ -12,7 +13,7 @@ export default class LandingPage extends Component {
             Walter Apartments
           </h1>
           <div style={{ paddingLeft: "35%", paddingTop: "30px" }}>
-            <Link to="/">Back</Link>
+            <Label><Link to="/">Back</Link></Label>
           </div>
         </div>
 
