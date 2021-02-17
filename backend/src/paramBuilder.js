@@ -1,53 +1,29 @@
-const getResidentQuery = (bucketName, unit) => {
+//Typscript objects:
+// bucketname and key would have type string
+// object would have type any
+
+const getSingleObjectQuery = (bucketName, key) => {
   return {
     Bucket: bucketName,
-    Key: `${unit}.json`,
+    Key: key.toString(),
   };
 };
 
-const getListOfPackagesQuery = (bucketName) => {
+const getListQuery = (bucketName) => {
   return {
     Bucket: bucketName,
   };
 };
 
-const getListOfResidentsQuery = (bucketName) => {
+const putObjectQuery = (bucketName, key, object) => {
   return {
     Bucket: bucketName,
+    Key: key.toString(),
+    Body: JSON.stringify(object),
   };
 };
 
-const getAllPackagesQuery = (bucketName, key) => {
-  return {
-    Bucket: bucketName,
-    Key: key,
-  };
-};
-
-const getAllResidentsQuery = (bucketName, key) => {
-  return {
-    Bucket: bucketName,
-    Key: key.toString()
-  };
-};
-
-const putResidentObjectQuery = (bucketName, residentObject) => {
-  return {
-    Bucket: bucketName,
-    Key: `${residentObject.unit}.json`,
-    Body: JSON.stringify(residentObject),
-  };
-};
-
-const putPackageObjectQuery = (bucketName, packageObject) => {
-  return {
-    Bucket: bucketName,
-    Key: packageObject.id.toString() + ".json",
-    Body: JSON.stringify(packageObject),
-  };
-};
-
-const deletePackageObjectQuery = (bucketName, id) => {
+const deleteObjectQuery = (bucketName, id) => {
   return {
     Bucket: bucketName,
     Key: id.toString() + ".json",
@@ -55,12 +31,8 @@ const deletePackageObjectQuery = (bucketName, id) => {
 };
 
 module.exports = {
-  getResidentQuery,
-  getListOfPackagesQuery,
-  getAllPackagesQuery,
-  putResidentObjectQuery,
-  putPackageObjectQuery,
-  deletePackageObjectQuery,
-  getListOfResidentsQuery,
-  getAllResidentsQuery
+  getSingleObjectQuery,
+  getListQuery,
+  putObjectQuery,
+  deleteObjectQuery,
 };

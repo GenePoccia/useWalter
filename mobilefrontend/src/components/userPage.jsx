@@ -4,7 +4,11 @@ import UserDetails from "./userDetails";
 export default class UserPage extends Component {
   constructor(props) {
     super(props);
-    this.state = { listOfPackages: null, resident: this.props.props, loaded: false };
+    this.state = {
+      listOfPackages: null,
+      resident: this.props.props,
+      loaded: false,
+    };
   }
 
   componentWillMount = () => {

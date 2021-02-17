@@ -1,24 +1,34 @@
 const aws = require("./awsQueries");
 
-//Get list of residents, (Very bad, put this in DB)
-// const getResidents = () => {
-//   return RESIDENTS;
-// };
+RESIDENT_BUCKET = "walter-residents";
+
+//Typescript: resident would have type Resident:
+// {
+//   "name": string
+//   "unit": int
+//   "password": string
+//   "userEmail": string
+//   "packageDelivered": boolean
+//   "packages: array
+//   "notifications": object
+// }
 
 const getResidents = async () => {
-  return await aws.getS3Residents()
-}
+  return await aws.getAllObjectsFromDb(RESIDENT_BUCKET);
+};
 
 const sendNotification = async (object) => {
-  //gets resident object from s3
-  let residentObject = await aws.getS3Object(object);
+  //gets resident object from s3 based off unit number
+  let dbKey = object.unit + ".json";
+  let residentObject = await aws.getSingleS3Object(RESIDENT_BUCKET, dbKey);
   //push delivered notification to client object
   residentObject.packageDelivered = true;
-  aws.pushS3Object(residentObject);
+  aws.pushS3Object(RESIDENT_BUCKET, residentObject.unit, residentObject);
 };
 
 const checkLogin = async (form) => {
-  let residentObject = await aws.getS3Object(form);
+  let dbKey = form.unit + ".json";
+  let residentObject = await aws.getSingleS3Object(RESIDENT_BUCKET, dbKey);
   return await {
     loginSuccess: validateLogin(form, residentObject),
     resident: residentObject,

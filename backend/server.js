@@ -18,13 +18,13 @@ app.get("/get-packages", async (req, res) => {
   res.send({ body: packageList });
 });
 
-//Delete package from db once its picked up
 app.post("/delete-package", upload.none(), async (req, res) => {
   await packages.deletePackageFromDb(req.body);
 });
 
 app.post("/sendNotification", upload.none(), (req, res) => {
-  //push package to packageDB and set packageDelivered to true for resident for notification
+  //push package to packageDB for package list
+  //push resident object to db to set delivered to true for notification
   residents.sendNotification(req.body);
   packages.pushPackageToDb(req.body);
 });
